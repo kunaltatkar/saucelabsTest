@@ -1,0 +1,47 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- main
+
+pool:
+  vmImage: windows-2019
+
+
+steps:
+- task: NodeTool@0
+  displayName: 'Use Node 16.14.0'
+  inputs:
+    versionSpec: 16.14.0
+  timeoutInMinutes: 2
+
+- script: |
+   echo Hello world
+   npm install
+   # Install Playwright browsers
+   npx playwright install
+  #  npm view playwright version
+  #  npx playwright install-deps
+  workingDirectory: '$(System.DefaultWorkingDirectory)/'
+  displayName: 'Command Line Script'
+  
+- script: |
+   echo Installing Browsers
+   npx playwright install
+   npm view playwright version 
+  #  npx playwright install-deps  
+  workingDirectory: '$(System.DefaultWorkingDirectory)/'
+  displayName: 'Install Browsers'
+
+
+- task: Npm@1
+  displayName: 'npm run scripts'
+  inputs:
+    command: custom
+    workingDir: '$(System.DefaultWorkingDirectory)/'
+    verbose: false
+    customCommand: 'npx playwright test'
+  continueOnError: true
+  timeoutInMinutes: 30
