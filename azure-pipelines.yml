@@ -44,4 +44,4 @@ steps:
     verbose: false
     customCommand: 'run test:Chrome'
   continueOnError: true
-  timeoutInMinutes: 30
+  timeoutInMinutes: 5

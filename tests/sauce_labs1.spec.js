@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test')
 const { SauceloginPage } = require('../pageobjects/SauceloginPage')
 
-test('Sign in to Swag labs page', async ({ browser }) => {
+test('Sign in to Swag labs page @sauce', async ({ browser }) => {
 
     const context = await browser.newContext()
     const page = await context.newPage()
