@@ -17,7 +17,7 @@ const config = {
   use: {
 
     browserName: 'chromium',
-    headless: false,
+    headless: true,
     trace: 'retain-on-failure'
    
   },
