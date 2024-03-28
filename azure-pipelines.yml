@@ -42,6 +42,6 @@ steps:
     command: custom
     workingDir: '$(System.DefaultWorkingDirectory)/'
     verbose: false
-    customCommand: 'npx playwright test'
+    customCommand: 'run test:Chrome'
   continueOnError: true
   timeoutInMinutes: 30
