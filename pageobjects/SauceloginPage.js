@@ -1,7 +1,6 @@
 const {test, expect} = require('@playwright/test')
 
 class SauceloginPage{
-
     constructor(page){
         this.page = page
         this.logo = page.locator('.login_logo')
